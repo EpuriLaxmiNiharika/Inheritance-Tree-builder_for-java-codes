@@ -1,6 +1,7 @@
 # Inheritance-Tree-builder_for-java-codes
 
-INTRODUCTION
+INTRODUCTION:
+
 Project Title
 This project is Inheritance tree builder for java code. Basically with this a user can visualise all the classes, inner classes, inheritance relations in form of tree structure.
 
