@@ -12,7 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-import java.util.Set;
+import java.util.*;
+
 
 public class InheritanceTree extends JTree
 {
@@ -21,9 +22,10 @@ public class InheritanceTree extends JTree
 	ArrayList<DefaultMutableTreeNode> s1 = new ArrayList<DefaultMutableTreeNode>();
 	JTree tree1;
 	ArrayList<String> s = new ArrayList<String>();
-	Multimap<String, String> hm = ArrayListMultimap.create();
+	//Multimap<String, String> hm = ArrayListMultimap.create();
+	HashMap<String, ArrayList<String>> hm = new HashMap<String,ArrayList<String>>();
 
-	public InheritanceTree(Multimap<String, String> hm){
+	public InheritanceTree(HashMap<String, ArrayList<String>> hm){
 
 		root = new DefaultMutableTreeNode("Inheritance");
 		tree1 = new JTree(root);
@@ -44,15 +46,21 @@ public class InheritanceTree extends JTree
 
 			DefaultMutableTreeNode Node1 = new DefaultMutableTreeNode(key);
 
-			//   System.out.println("Key = " + key);
+			   System.out.println("Key = " + key);
 
-			for(String s1 : hm.get(key))
-			{
-				DefaultMutableTreeNode Node2 = new DefaultMutableTreeNode(s1);
-				Node1.add(Node2);
-			}
-
-			root.add(Node1);
+			   ArrayList<String> s1  =  hm.get(key);
+			
+			//{
+			DefaultMutableTreeNode Node2  = null;
+				for(String node: s1){
+					System.out.println("Key = " + key+"--"+node);
+					Node2 = new DefaultMutableTreeNode(node);
+					Node1.add(Node2);
+				}
+				
+			System.out.println("ehye");
+			//
+			root.add(Node1);	
 
 		}
 
