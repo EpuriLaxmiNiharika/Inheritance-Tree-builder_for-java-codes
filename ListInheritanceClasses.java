@@ -10,7 +10,7 @@ public  class ListInheritanceClasses {
 
 	ArrayList<String> s = new ArrayList<String>();
 	ArrayList<String> files_list = new ArrayList<String>();
-	static Multimap<String, String> hm = ArrayListMultimap.create();
+	static HashMap<String, ArrayList<String>> hm = new HashMap<String,ArrayList<String>>();
 	public static ArrayList<String> list = new ArrayList<String>();
 
 
@@ -156,10 +156,19 @@ public  class ListInheritanceClasses {
 
 						if(flag ==0) {
 
+							System.out.println("heye :"+s1);
+							
 							s.add(list.get(i-1)+  "->" + s1);
 
-							hm.put(s1,list.get(i-1));
-						}
+							ArrayList<String> base = hm.get(s1);
+							if(base==null){
+								base = new ArrayList<String>();
+							}
+							base.add(list.get(i-1));
+							//hm.put(s1,list.get(i-1));
+							hm.put(s1,base);
+							System.out.println("saasas: "+hm.keySet().size());
+						}	
 
 					}
 
@@ -175,9 +184,20 @@ public  class ListInheritanceClasses {
 
 						if(flag ==0) {
 
+							System.out.println("heye :"+s1);
+							//s.add(list.get(i-1)+  "->" + s1);
+
+							//hm.put(s1,list.get(i-1));
 							s.add(list.get(i-1)+  "->" + s1);
 
-							hm.put(s1,list.get(i-1));
+							ArrayList<String> base = hm.get(s1);
+							if(base==null){
+								base = new ArrayList<String>();
+							}
+							base.add(list.get(i-1));
+							//hm.put(s1,list.get(i-1));
+							hm.put(s1,base);
+							System.out.println("saasas: "+hm.keySet().size());
 
 						}
 
@@ -205,9 +225,10 @@ public  class ListInheritanceClasses {
 	public JTree InheritanceTreeBuild() {
 
 		getInherianceList();
-
+			
+		//System.out.println("saasas: "+hm.keySet().size());
 		return new InheritanceTree(hm).TreeBuild();
-
+		//return null;
 	}
 
 
@@ -258,10 +279,5 @@ public  class ListInheritanceClasses {
 		//	System.out.println("I am sasasa");
 		//	System.out.println(files_list.size());
 		//	PrintArrayList(s);	
-
-
-	}		
-
-
+	}	
 }
-
